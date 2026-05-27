@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createClient, createServiceClient } from '@/lib/supabase/server'
+import { createClient } from '@/lib/supabase/server'
 
 export async function GET(request: NextRequest) {
   const { searchParams, origin } = new URL(request.url)
@@ -16,9 +16,8 @@ export async function GET(request: NextRequest) {
       
       if (user && user.email) {
         // 2. Verificar se o e-mail do usuário está na lista de e-mails autorizados (Whitelist)
-        // Usamos createServiceClient para garantir que a consulta passe pelo bypass administrativo.
-        const serviceClient = createServiceClient()
-        const { data: authorized, error: dbError } = await serviceClient
+        // Usamos o próprio cliente supabase que opera sob as políticas de segurança RLS (mais seguro e resiliente).
+        const { data: authorized, error: dbError } = await supabase
           .from('emails_autorizados')
           .select('email')
           .eq('email', user.email)

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { Home, Calendar, Settings, LogOut, MessageSquare, Users } from 'lucide-react'
-import { createClient, createServiceClient } from '@/lib/supabase/server'
+import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
@@ -10,8 +10,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
 
   // Verificar se o e-mail do usuário ainda está autorizado comercialmente
   if (user.email) {
-    const serviceClient = createServiceClient()
-    const { data: authorized, error: dbError } = await serviceClient
+    const { data: authorized, error: dbError } = await supabase
       .from('emails_autorizados')
       .select('email')
       .eq('email', user.email)
