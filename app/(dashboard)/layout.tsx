@@ -1,12 +1,28 @@
 import Link from 'next/link'
 import { Home, Calendar, Settings, LogOut, MessageSquare, Users } from 'lucide-react'
-import { createClient } from '@/lib/supabase/server'
+import { createClient, createServiceClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) redirect('/login')
+
+  // Verificar se o e-mail do usuário ainda está autorizado comercialmente
+  if (user.email) {
+    const serviceClient = createServiceClient()
+    const { data: authorized, error: dbError } = await serviceClient
+      .from('emails_autorizados')
+      .select('email')
+      .eq('email', user.email)
+      .single()
+
+    if (dbError || !authorized) {
+      await supabase.auth.signOut()
+      redirect('/login?error=unauthorized_license')
+    }
+  }
+
 
   return (
     <div className="flex h-screen bg-slate-50 dark:bg-slate-950 transition-colors duration-300">

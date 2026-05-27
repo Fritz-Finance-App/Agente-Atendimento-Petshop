@@ -1,6 +1,13 @@
 export type AgendamentoStatus = 'agendado' | 'em_andamento' | 'finalizado' | 'cancelado'
 export type PetPorte = 'pequeno' | 'medio' | 'grande'
 
+export interface EmailAutorizado {
+  id: string
+  email: string
+  descricao: string | null
+  created_at: string
+}
+
 export interface Petshop {
   id: string
   owner_id: string
@@ -230,6 +237,27 @@ export type Database = {
         }
         Relationships: []
       }
+      emails_autorizados: {
+        Row: {
+          id: string
+          email: string
+          descricao: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          email: string
+          descricao?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          email?: string
+          descricao?: string | null
+          created_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -242,3 +270,4 @@ export type Database = {
     }
   }
 }
+

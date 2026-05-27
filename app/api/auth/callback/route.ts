@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createClient } from '@/lib/supabase/server'
+import { createClient, createServiceClient } from '@/lib/supabase/server'
 
 export async function GET(request: NextRequest) {
   const { searchParams, origin } = new URL(request.url)
@@ -8,9 +8,33 @@ export async function GET(request: NextRequest) {
 
   if (code) {
     const supabase = await createClient()
-    const { error } = await supabase.auth.exchangeCodeForSession(code)
-    if (!error) return NextResponse.redirect(`${origin}${next}`)
+    const { error: authError } = await supabase.auth.exchangeCodeForSession(code)
+    
+    if (!authError) {
+      // 1. Obter o usuário recém-autenticado
+      const { data: { user } } = await supabase.auth.getUser()
+      
+      if (user && user.email) {
+        // 2. Verificar se o e-mail do usuário está na lista de e-mails autorizados (Whitelist)
+        // Usamos createServiceClient para garantir que a consulta passe pelo bypass administrativo.
+        const serviceClient = createServiceClient()
+        const { data: authorized, error: dbError } = await serviceClient
+          .from('emails_autorizados')
+          .select('email')
+          .eq('email', user.email)
+          .single()
+
+        // 3. Se não estiver autorizado, desconecta e bloqueia imediatamente
+        if (dbError || !authorized) {
+          await supabase.auth.signOut()
+          return NextResponse.redirect(`${origin}/login?error=unauthorized_license`)
+        }
+      }
+      
+      return NextResponse.redirect(`${origin}${next}`)
+    }
   }
 
   return NextResponse.redirect(`${origin}/login?error=auth_callback_failed`)
 }
+
