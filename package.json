@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "simulate": "node scripts/simulate-chat.mjs"
+    "simulate": "node scripts/simulate-chat.mjs",
+    "add-email": "node scripts/add-authorized-email.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.4.1",
