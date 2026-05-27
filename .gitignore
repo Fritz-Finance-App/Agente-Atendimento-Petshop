@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local scripts with secrets
+check_agendamentos_schema.js
+inspect_agendamentos.js
