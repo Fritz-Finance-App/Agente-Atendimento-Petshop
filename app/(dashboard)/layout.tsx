@@ -18,7 +18,6 @@ export default async function DashboardLayout({ children }: { children: React.Re
       .single()
 
     if (dbError || !authorized) {
-      await supabase.auth.signOut()
       redirect('/login?error=unauthorized_license')
     }
   }
