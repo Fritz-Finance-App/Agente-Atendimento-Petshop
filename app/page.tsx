@@ -274,11 +274,11 @@ export default function Home() {
                 <h4 className="text-lg font-bold text-slate-900 dark:text-white">Lara Essencial</h4>
                 <div className="flex items-baseline text-slate-900 dark:text-white">
                   <span className="text-2xl font-bold">R$</span>
-                  <span className="text-5xl font-black tracking-tight">500</span>
+                  <span className="text-5xl font-black tracking-tight">350</span>
                   <span className="text-slate-400 ml-1 text-xs">/mês</span>
                 </div>
                 <p className="text-xs text-slate-400 leading-relaxed font-medium">
-                  Ideal para petshops focados no atendimento automático por IA e na facilidade de integração inicial.
+                  Ideal para petshops focados estritamente na automatização de atendimentos e agendamentos com a Lara IA.
                 </p>
               </div>
 
@@ -286,10 +286,6 @@ export default function Home() {
                 <li className="flex items-center gap-2.5">
                   <Check size={14} className="text-emerald-500 shrink-0" />
                   Atendente Lara IA no WhatsApp 24/7
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <Check size={14} className="text-emerald-500 shrink-0" />
-                  Plataforma de Onboarding Prática
                 </li>
                 <li className="flex items-center gap-2.5">
                   <Check size={14} className="text-emerald-500 shrink-0" />
@@ -318,18 +314,18 @@ export default function Home() {
               
               {/* Badge Popular */}
               <div className="absolute top-4 right-4 bg-indigo-600 text-white font-extrabold text-[9px] uppercase tracking-wider px-2.5 py-1 rounded-full">
-                Solução Completa
+                Melhor Escolha
               </div>
 
               <div className="space-y-4 mb-8">
                 <h4 className="text-lg font-bold text-slate-900 dark:text-white">PetAtende Pro</h4>
                 <div className="flex items-baseline text-slate-900 dark:text-white">
                   <span className="text-2xl font-bold">R$</span>
-                  <span className="text-5xl font-black tracking-tight">750</span>
+                  <span className="text-5xl font-black tracking-tight">500</span>
                   <span className="text-slate-400 ml-1 text-xs">/mês</span>
                 </div>
                 <p className="text-xs text-slate-450 dark:text-slate-400 leading-relaxed font-medium">
-                  A ferramenta de gestão operacional e financeira definitiva para o crescimento do seu petshop.
+                  A solução completa combinando a Lara IA com a nossa plataforma de onboarding e gestão.
                 </p>
               </div>
 
@@ -337,6 +333,10 @@ export default function Home() {
                 <li className="flex items-center gap-2.5">
                   <Check size={14} className="text-indigo-500 shrink-0" />
                   <strong>Tudo do Plano Lara Essencial</strong>
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <Check size={14} className="text-emerald-500 shrink-0" />
+                  Plataforma de Onboarding Prática & Integrada
                 </li>
                 <li className="flex items-center gap-2.5">
                   <Check size={14} className="text-emerald-500 shrink-0" />
@@ -349,10 +349,6 @@ export default function Home() {
                 <li className="flex items-center gap-2.5">
                   <Check size={14} className="text-emerald-500 shrink-0" />
                   Métricas financeiras e estatísticas avançadas
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <Check size={14} className="text-emerald-500 shrink-0" />
-                  Suporte Premium com Gerente Dedicado
                 </li>
               </ul>
 
