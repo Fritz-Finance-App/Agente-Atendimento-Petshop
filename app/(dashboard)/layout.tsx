@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { Home, Calendar, Settings, LogOut, MessageSquare, Users } from 'lucide-react'
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
+import { PetAtendeLogo } from '@/components/ui/PetAtendeLogo'
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
   const supabase = await createClient()
@@ -25,11 +26,8 @@ export default async function DashboardLayout({ children }: { children: React.Re
   return (
     <div className="flex h-screen bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
       <aside className="w-56 bg-white dark:bg-slate-900 border-r border-gray-200 dark:border-slate-800 flex flex-col shrink-0 transition-colors duration-300">
-        <div className="p-4 border-b border-gray-100 dark:border-slate-800 flex items-center gap-2">
-          <span className="h-2 w-2 rounded-full bg-indigo-600 animate-pulse" />
-          <h1 className="font-extrabold text-base bg-gradient-to-r from-indigo-600 to-violet-600 dark:from-indigo-400 dark:to-violet-400 bg-clip-text text-transparent tracking-tight">
-            PetShop Manager
-          </h1>
+        <div className="p-4 border-b border-gray-100 dark:border-slate-800 flex items-center justify-start">
+          <PetAtendeLogo iconSize={28} textSize="lg" />
         </div>
 
         <nav className="flex-1 p-3 space-y-1">

@@ -1,18 +1,30 @@
 'use client'
-import { useState, Suspense } from 'react'
+import { useState, Suspense, useEffect } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { ShieldAlert, MailCheck, ShieldCheck, KeyRound, Mail } from 'lucide-react'
+import { Card, CardContent, CardDescription, CardHeader } from '@/components/ui/card'
+import { PetAtendeLogo } from '@/components/ui/PetAtendeLogo'
+import { ShieldAlert, MailCheck, KeyRound, Mail } from 'lucide-react'
 
 function LoginContent() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const error = searchParams.get('error')
   
+  // Limpar a sessão no cliente caso tenha sido redirecionado por falta de licença
+  // Isso evita erros de escrita de cookies no Server Component do DashboardLayout.
+  useEffect(() => {
+    if (error === 'unauthorized_license') {
+      const supabase = createClient()
+      supabase.auth.signOut().then(() => {
+        router.refresh()
+      })
+    }
+  }, [error, router])
+
   const [activeTab, setActiveTab] = useState<'magic' | 'password'>('magic')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -72,15 +84,12 @@ function LoginContent() {
 
   return (
     <>
-      <CardHeader className="text-center pb-2">
-        <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400">
-          <ShieldCheck className="h-6 w-6" />
+      <CardHeader className="text-center pb-4 pt-6">
+        <div className="flex justify-center mb-3">
+          <PetAtendeLogo iconSize={36} textSize="2xl" />
         </div>
-        <CardTitle className="text-2xl font-black bg-gradient-to-r from-indigo-600 to-violet-600 dark:from-indigo-400 dark:to-violet-400 bg-clip-text text-transparent">
-          PetShop Manager
-        </CardTitle>
-        <CardDescription className="dark:text-slate-400">
-          Gerenciamento comercial premium com IA
+        <CardDescription className="dark:text-slate-400 font-medium">
+          Automatize o atendimento e a gestão do seu PetShop
         </CardDescription>
       </CardHeader>
       
@@ -92,7 +101,7 @@ function LoginContent() {
             <div className="space-y-1">
               <p className="text-sm font-bold tracking-tight">Licença Não Ativada</p>
               <p className="text-xs leading-relaxed opacity-90">
-                O e-mail informado não está cadastrado na whitelist da plataforma. Entre em contato com a equipe Fritz Finance para liberar o seu acesso comercial.
+                O e-mail informado não está cadastrado na whitelist da plataforma. Entre em contato com a equipe comercial do PetAtende para liberar o seu acesso.
               </p>
             </div>
           </div>

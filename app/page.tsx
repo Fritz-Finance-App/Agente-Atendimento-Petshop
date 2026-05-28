@@ -271,14 +271,14 @@ export default function Home() {
             {/* Plano Mensal */}
             <div className="bg-slate-50 dark:bg-slate-950 p-8 rounded-3xl border border-slate-200/50 dark:border-slate-800/40 hover:scale-[1.01] transition-transform duration-300 flex flex-col relative overflow-hidden">
               <div className="space-y-4 mb-8">
-                <h4 className="text-lg font-bold text-slate-900 dark:text-white">Plano Mensal Flex</h4>
+                <h4 className="text-lg font-bold text-slate-900 dark:text-white">Lara Essencial</h4>
                 <div className="flex items-baseline text-slate-900 dark:text-white">
                   <span className="text-2xl font-bold">R$</span>
-                  <span className="text-5xl font-black tracking-tight">149</span>
+                  <span className="text-5xl font-black tracking-tight">500</span>
                   <span className="text-slate-400 ml-1 text-xs">/mês</span>
                 </div>
                 <p className="text-xs text-slate-400 leading-relaxed font-medium">
-                  Ideal para petshops individuais que querem experimentar e ter total flexibilidade de assinatura.
+                  Ideal para petshops focados no atendimento automático por IA e na facilidade de integração inicial.
                 </p>
               </div>
 
@@ -289,19 +289,19 @@ export default function Home() {
                 </li>
                 <li className="flex items-center gap-2.5">
                   <Check size={14} className="text-emerald-500 shrink-0" />
-                  Painel Kanban Completo e Multi-tenant
+                  Plataforma de Onboarding Prática
                 </li>
                 <li className="flex items-center gap-2.5">
                   <Check size={14} className="text-emerald-500 shrink-0" />
-                  Integração com Google Agenda (Sinc)
+                  Cadastro Ilimitado de Clientes & Pets
                 </li>
                 <li className="flex items-center gap-2.5">
                   <Check size={14} className="text-emerald-500 shrink-0" />
-                  Cadastro de Clientes, Pets e Serviços
+                  Configuração de Serviços & Catálogo
                 </li>
                 <li className="flex items-center gap-2.5">
                   <Check size={14} className="text-emerald-500 shrink-0" />
-                  Suporte técnico prioritário por chat
+                  Suporte técnico oficial por chat
                 </li>
               </ul>
 
@@ -313,34 +313,38 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* Plano Anual */}
+            {/* Plano Pro */}
             <div className="bg-slate-50 dark:bg-slate-950 p-8 rounded-3xl border-2 border-indigo-600 dark:border-indigo-500 hover:scale-[1.01] transition-transform duration-300 flex flex-col relative overflow-hidden shadow-xl shadow-indigo-500/5">
               
               {/* Badge Popular */}
               <div className="absolute top-4 right-4 bg-indigo-600 text-white font-extrabold text-[9px] uppercase tracking-wider px-2.5 py-1 rounded-full">
-                Melhor Economia
+                Solução Completa
               </div>
 
               <div className="space-y-4 mb-8">
-                <h4 className="text-lg font-bold text-slate-900 dark:text-white">Plano Anual Premium</h4>
+                <h4 className="text-lg font-bold text-slate-900 dark:text-white">PetAtende Pro</h4>
                 <div className="flex items-baseline text-slate-900 dark:text-white">
                   <span className="text-2xl font-bold">R$</span>
-                  <span className="text-5xl font-black tracking-tight">119</span>
+                  <span className="text-5xl font-black tracking-tight">750</span>
                   <span className="text-slate-400 ml-1 text-xs">/mês</span>
                 </div>
-                <p className="text-xs text-slate-450 dark:text-slate-400 leading-relaxed font-bold">
-                  Cobrado anualmente (R$ 1.428). Economize R$ 360 por ano comparado ao plano mensal!
+                <p className="text-xs text-slate-450 dark:text-slate-400 leading-relaxed font-medium">
+                  A ferramenta de gestão operacional e financeira definitiva para o crescimento do seu petshop.
                 </p>
               </div>
 
               <ul className="space-y-3 text-xs text-slate-650 dark:text-slate-350 flex-1 mb-8">
                 <li className="flex items-center gap-2.5">
                   <Check size={14} className="text-indigo-500 shrink-0" />
-                  <strong>Tudo do Plano Mensal</strong>
+                  <strong>Tudo do Plano Lara Essencial</strong>
                 </li>
                 <li className="flex items-center gap-2.5">
                   <Check size={14} className="text-emerald-500 shrink-0" />
-                  Redução automática de 20% no valor mensal
+                  Painel Operacional Kanban Completo
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <Check size={14} className="text-emerald-500 shrink-0" />
+                  Sincronização com Google Agenda (Equipe)
                 </li>
                 <li className="flex items-center gap-2.5">
                   <Check size={14} className="text-emerald-500 shrink-0" />
@@ -348,11 +352,7 @@ export default function Home() {
                 </li>
                 <li className="flex items-center gap-2.5">
                   <Check size={14} className="text-emerald-500 shrink-0" />
-                  Prioridade em novos recursos lançados
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <Check size={14} className="text-emerald-500 shrink-0" />
-                  Gerente de Sucesso do Cliente dedicado
+                  Suporte Premium com Gerente Dedicado
                 </li>
               </ul>
 
@@ -360,7 +360,7 @@ export default function Home() {
                 href="/login"
                 className="w-full inline-flex items-center justify-center bg-indigo-600 hover:bg-indigo-750 text-white font-extrabold py-3.5 rounded-xl transition-all shadow-md shadow-indigo-600/10 cursor-pointer"
               >
-                Garantir Plano Premium
+                Garantir Plano Pro
               </Link>
             </div>
 
